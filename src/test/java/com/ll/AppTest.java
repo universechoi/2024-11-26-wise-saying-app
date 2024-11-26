@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class AppTest {
     public static String run(String input) throws IOException {
 
-        Scanner scanner = TestUtil.getScanner(input);
+        Scanner scanner = TestUtil.getScanner(input + "종료");
 
         ByteArrayOutputStream outputStream = TestUtil.setOutToByteArray();
 
