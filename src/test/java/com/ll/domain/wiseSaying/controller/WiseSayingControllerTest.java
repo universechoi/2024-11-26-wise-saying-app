@@ -50,7 +50,10 @@ public class WiseSayingControllerTest {
                 등록
                 과거에 집착하지 마라.
                 작자미상
+                목록
                 """);
+
+        System.out.println(output);
 
         assertThat(output)
                 .contains("번호 / 작가 / 명언")
