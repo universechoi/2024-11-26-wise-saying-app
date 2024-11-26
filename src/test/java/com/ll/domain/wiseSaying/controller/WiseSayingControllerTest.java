@@ -38,4 +38,18 @@ public class WiseSayingControllerTest {
         String[] split = output.split("명령\\) ");
         assertThat(split).hasSize(4);
     }
+
+    @Test
+    @DisplayName("등록")
+    public void registerTest() throws IOException {
+        String output = AppTest.run("""
+                등록
+                현재를 사랑하라
+                작자미상
+                """);
+
+        assertThat(output)
+                .contains("명언 : ")
+                .contains("작가 : ");
+    }
 }
