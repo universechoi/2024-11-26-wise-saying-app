@@ -28,6 +28,8 @@ public class App {
                 break;
             } else if (cmd.equals("등록")) {
                 wiseSayingController.register(scanner);
+            } else if (cmd.equals("목록")) {
+                wiseSayingController.list();
             }
         }
     }
