@@ -23,6 +23,8 @@ public class WiseSaying {
         return author;
     }
 
+    public void setId(int id) { this.id = id; }
+
     public void setContent(String content) {
         this.content = content;
     }
@@ -30,4 +32,5 @@ public class WiseSaying {
     public void setAuthor(String author) {
         this.author = author;
     }
+
 }
