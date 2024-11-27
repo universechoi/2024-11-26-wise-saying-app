@@ -1,5 +1,6 @@
 package com.ll.domain.wiseSaying.controller;
 
+import com.ll.Command;
 import com.ll.domain.wiseSaying.entity.WiseSaying;
 import com.ll.domain.wiseSaying.service.WiseSayingService;
 
@@ -37,16 +38,11 @@ public class WiseSayingController {
         }
     }
 
-    public void delete(String cmd) {
-        String[] cmdBits = null;
-        int id = 0;
+    public void delete(Command cmd) {
+        int id = cmd.getParamAsInt("id", 0);
 
-        try {
-            cmdBits = cmd.split("\\?");
-            id = Integer.parseInt(cmdBits[1].split("=")[1]);
-        } catch (Exception e) {
-            System.out.println("명령어를 잘못 입력하셨습니다.");
-            return;
+        if (id == 0) {
+            System.out.println("id(숫자)를 입력해 주세요.");
         }
 
         boolean deleted = WiseSayingService.deleteById(id);

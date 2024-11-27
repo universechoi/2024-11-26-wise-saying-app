@@ -21,12 +21,11 @@ public class App {
 
         while (true) {
             System.out.println("명령) ");
-            String cmd = scanner.nextLine();
+            String input = scanner.nextLine();
 
-            String[] cmdBits = cmd.split("\\?");
-            String actionName = cmdBits[0];
+            Command cmd = new Command(input);
 
-            switch(actionName) {
+            switch(cmd.getActionName()) {
                 case "종료":
                     systemController.exit();
                     return ;
