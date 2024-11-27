@@ -7,10 +7,10 @@ import java.util.List;
 
 public class WiseSayingService {
 
-    private final WiseSayingRepository wiseSayingRepository;
+    private static WiseSayingRepository wiseSayingRepository;
 
     public WiseSayingService() {
-        this.wiseSayingRepository = new WiseSayingRepository();
+        wiseSayingRepository = new WiseSayingRepository();
     }
 
     public WiseSaying add(String content, String author) {
@@ -18,8 +18,11 @@ public class WiseSayingService {
         return wiseSayingRepository.save(wiseSaying);
     }
 
-
     public List<WiseSaying> findAll() {
         return wiseSayingRepository.findAll();
+    }
+
+    public static boolean deleteById(int id) {
+        return wiseSayingRepository.deleteById(id);
     }
 }

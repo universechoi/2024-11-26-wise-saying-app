@@ -36,4 +36,25 @@ public class WiseSayingController {
             System.out.println(wiseSaying.getId() + " / " + wiseSaying.getAuthor() + " / " + wiseSaying.getContent());
         }
     }
+
+    public void delete(String cmd) {
+        String[] cmdBits = null;
+        int id = 0;
+
+        try {
+            cmdBits = cmd.split("\\?");
+            id = Integer.parseInt(cmdBits[1].split("=")[1]);
+        } catch (Exception e) {
+            System.out.println("명령어를 잘못 입력하셨습니다.");
+            return;
+        }
+
+        boolean deleted = WiseSayingService.deleteById(id);
+
+        if (deleted) {
+            System.out.println(id + "번 명언이 삭제되었습니다.");
+        } else {
+            System.out.println(id + "번 명언은 존재하지 않습니다.");
+        }
+    }
 }

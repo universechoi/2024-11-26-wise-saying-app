@@ -21,15 +21,20 @@ public class App {
 
         while (true) {
             System.out.println("명령) ");
-
             String cmd = scanner.nextLine();
-            if(cmd.equals("종료")) {
+
+            String[] cmdBits = cmd.split("\\?");
+            String actionName = cmdBits[0];
+
+            if(actionName.equals("종료")) {
                 systemController.exit();
                 break;
-            } else if (cmd.equals("등록")) {
+            } else if (actionName.equals("등록")) {
                 wiseSayingController.register(scanner);
-            } else if (cmd.equals("목록")) {
+            } else if (actionName.equals("목록")) {
                 wiseSayingController.list();
+            } else if (actionName.equals("삭제")) {
+                wiseSayingController.delete(cmd);
             }
         }
     }
