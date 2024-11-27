@@ -4,6 +4,7 @@ import com.ll.domain.wiseSaying.entity.WiseSaying;
 import com.ll.domain.wiseSaying.repository.WiseSayingRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public class WiseSayingService {
 
@@ -24,5 +25,9 @@ public class WiseSayingService {
 
     public static boolean deleteById(int id) {
         return wiseSayingRepository.deleteById(id);
+    }
+
+    public static Optional<WiseSaying> findById(int id) {
+        return wiseSayingRepository.findById(id);
     }
 }

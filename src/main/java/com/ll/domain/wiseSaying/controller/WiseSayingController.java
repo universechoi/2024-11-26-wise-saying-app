@@ -5,6 +5,7 @@ import com.ll.domain.wiseSaying.entity.WiseSaying;
 import com.ll.domain.wiseSaying.service.WiseSayingService;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class WiseSayingController {
@@ -52,5 +53,26 @@ public class WiseSayingController {
         } else {
             System.out.println(id + "번 명언은 존재하지 않습니다.");
         }
+    }
+
+    public void modify(Command cmd) {
+        int id = cmd.getParamAsInt("id", 0);
+
+        if (id == 0) {
+            System.out.println("id(숫자)를 입력해 주세요.");
+        }
+
+        Optional<WiseSaying> opWiseSaying = WiseSayingService.findById(id);
+
+        if (opWiseSaying.isEmpty()) {
+            System.out.println(id + "번 명언은 존재하지 않습니다.");
+            return;
+        }
+
+        WiseSaying wiseSaying = opWiseSaying.get();
+
+        System.out.print("명언(기존) : " + wiseSaying.getContent());
+        System.out.print("작가(기존) : " + wiseSaying.getAuthor());
+
     }
 }
