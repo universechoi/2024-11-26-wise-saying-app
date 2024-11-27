@@ -83,4 +83,24 @@ public class WiseSayingControllerTest {
                 .contains("1 / 작자미상 / 현재를 사랑하라.")
                 .doesNotContain("2 / 작자미상 / 과거에 집착하지 마라.");
     }
+
+    @Test
+    @DisplayName("삭제")
+    public void deleteTest2() throws IOException {
+        String output = AppTest.run("""
+                등록
+                현재를 사랑하라.
+                작자미상
+                등록
+                과거에 집착하지 마라.
+                작자미상
+                삭제?id=23
+                목록
+                """);
+
+        System.out.println(output);
+
+        assertThat(output)
+                .contains("3번 명언은 존재하지 않습니다.");
+    }
 }
