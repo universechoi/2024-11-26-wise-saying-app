@@ -30,4 +30,8 @@ public class Command {
     public String getParam(String key) {
         return this.params.get(key);
     }
+
+    public String getParam(String key, String defaultValue) {
+        return params.getOrDefault(key, defaultValue);
+    }
 }
