@@ -17,7 +17,7 @@ public class WiseSayingRepository {
     }
 
     public WiseSaying save(WiseSaying wiseSaying) {
-        if (wiseSaying.getId() != 0) {
+        if (!wiseSaying.isNew()) {
             return wiseSaying;
         }
 
