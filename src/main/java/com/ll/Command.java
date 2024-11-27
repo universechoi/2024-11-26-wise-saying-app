@@ -16,7 +16,11 @@ public class Command {
             return;
         }
 
-        String queryString = split[1];
+        String queryString = split[1].trim();
+        if (queryString.isEmpty()) {
+            return;
+        }
+
         String[] queryStringBits = queryString.split("&");
 
         for (String queryStringBit : queryStringBits) {
