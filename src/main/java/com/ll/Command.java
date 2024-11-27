@@ -34,4 +34,14 @@ public class Command {
     public String getParam(String key, String defaultValue) {
         return params.getOrDefault(key, defaultValue);
     }
+
+    public int getParamAsInt(String key, int defaultValue) {
+        String value = getParam(key);
+
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+    }
 }
