@@ -47,4 +47,10 @@ public class CommandTest {
         Command cmd = new Command("삭제?id=10");
         assertThat(cmd.getParamAsInt("number", 0)).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("new Comand(\"목록? \") not throws Exception")
+    public void commandTest7() {
+        Command cmd = new Command("목록? ");
+    }
 }
