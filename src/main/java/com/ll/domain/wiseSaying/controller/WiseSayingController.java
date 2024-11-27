@@ -9,14 +9,16 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class WiseSayingController {
+    private final Scanner scanner;
     private final WiseSayingService wiseSayingService;
 
 
-    public WiseSayingController() {
+    public WiseSayingController(Scanner scanner) {
+        this.scanner = scanner;
         this.wiseSayingService = new WiseSayingService();
     }
 
-    public void register(Scanner scanner) {
+    public void register() {
         System.out.println("명언 : ");
         String content = scanner.nextLine();
 
@@ -72,7 +74,11 @@ public class WiseSayingController {
         WiseSaying wiseSaying = opWiseSaying.get();
 
         System.out.print("명언(기존) : " + wiseSaying.getContent());
-        System.out.print("작가(기존) : " + wiseSaying.getAuthor());
+        String content = scanner.nextLine();
 
+        System.out.print("작가(기존) : " + wiseSaying.getAuthor());
+        String author = scanner.nextLine();
+
+        wiseSayingService.modify(wiseSaying, content, author);
     }
 }

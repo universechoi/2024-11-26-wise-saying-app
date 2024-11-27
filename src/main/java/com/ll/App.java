@@ -13,7 +13,7 @@ public class App {
     public App(Scanner scanner) {
         this.scanner = scanner;
         this.systemController = new SystemController();
-        this.wiseSayingController = new WiseSayingController();
+        this.wiseSayingController = new WiseSayingController(scanner);
     }
 
     public void run() {
@@ -30,7 +30,7 @@ public class App {
                     systemController.exit();
                     return ;
                 case "등록":
-                    wiseSayingController.register(scanner);
+                    wiseSayingController.register();
                     break;
                 case "목록":
                     wiseSayingController.list();
