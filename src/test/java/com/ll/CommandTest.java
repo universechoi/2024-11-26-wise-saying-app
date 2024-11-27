@@ -19,4 +19,11 @@ public class CommandTest {
         Command cmd = new Command("삭제?id=10");
         assertThat(cmd.getParam("id")).isEqualTo("10");
     }
+
+    @Test
+    @DisplayName("Command")
+    public void commandTest3() {
+        Command cmd = new Command("삭제?id=10");
+        assertThat(cmd.getParam("number")).isNull();
+    }
 }
