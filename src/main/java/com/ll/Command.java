@@ -5,16 +5,18 @@ import java.util.Map;
 
 public class Command {
     private final String actionName;
-    private final String queryString;
     private final Map<String, String> params;
 
     public Command(String cmd) {
-        String[] split = cmd.trim().split("\\?");
+        this.params = new HashMap<>();
+        String[] split = cmd.trim().split("\\?", 2);
         this.actionName = split[0];
 
-        this.params = new HashMap<>();
-        this.queryString = split.length > 1 ? split[1] : "";
+        if (split.length == 1) {
+            return;
+        }
 
+        String queryString = split[1];
         String[] queryStringBits = queryString.split("&");
 
         for (String queryStringBit : queryStringBits) {
