@@ -61,7 +61,7 @@ public class UtilTest {
         Util.file.touch(filePath);
         // then
         assertThat(
-                Util.file.notExists(filePath)
+                Util.file.exists(filePath)
         ).isTrue();
     }
 }
