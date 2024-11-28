@@ -12,7 +12,21 @@ public class Util {
             try {
                 Files.writeString(path, content, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                final Path parentDir = path.getParent();
+                if (parentDir != null && Files.notExists(parentDir)) {
+                    try {
+                        Files.createDirectories(parentDir);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    try {
+                        Files.writeString(path, content, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                } else {
+                    throw new RuntimeException(e);
+                }
             }
         }
 
@@ -48,6 +62,7 @@ public class Util {
                         Files.delete(file); // 파일 삭제
                         return FileVisitResult.CONTINUE;
                     }
+
                     @Override
                     public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
                         Files.delete(dir); // 디렉토리 삭제
