@@ -51,4 +51,17 @@ public class UtilTest {
                 Util.file.notExists(filePath)
         ).isTrue();
     }
+
+    @Test
+    @DisplayName("해당 경로의 폴더가 없다면 만들어서 파일을 생성한다.")
+    public void createTest2() {
+        // given
+        String filePath = "temp/temp/test.txt";
+        // when
+        Util.file.touch(filePath);
+        // then
+        assertThat(
+                Util.file.notExists(filePath)
+        ).isTrue();
+    }
 }
