@@ -2,41 +2,16 @@ package com.ll.domain.wiseSaying.repository;
 
 import com.ll.domain.wiseSaying.entity.WiseSaying;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class WiseSayingRepository {
-    private int lastId;
-    private final List<WiseSaying> wiseSayingList;
+public abstract class WiseSayingRepository {
 
-    public WiseSayingRepository() {
-        this.lastId = 0;
+    public abstract WiseSaying save(WiseSaying wiseSaying);
 
-        this.wiseSayingList = new ArrayList<>();
-    }
+    public abstract List<WiseSaying> findAll() ;
 
-    public WiseSaying save(WiseSaying wiseSaying) {
-        if (!wiseSaying.isNew()) {
-            return wiseSaying;
-        }
+    public abstract boolean deleteById(int id);
 
-        wiseSaying.setId(++lastId);
-        wiseSayingList.add(wiseSaying);
-        return wiseSaying;
-    }
-
-    public List<WiseSaying> findAll() {
-        return wiseSayingList;
-    }
-
-    public boolean deleteById(int id) {
-        return wiseSayingList.removeIf(wiseSaying -> wiseSaying.getId() == id);
-    }
-
-    public Optional<WiseSaying> findById(int id) {
-        return wiseSayingList.stream()
-                .filter(wiseSaying -> wiseSaying.getId() == id)
-                .findFirst();
-    }
+    public abstract Optional<WiseSaying> findById(int id);
 }
