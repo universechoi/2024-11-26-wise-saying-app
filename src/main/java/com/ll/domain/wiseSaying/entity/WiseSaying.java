@@ -15,6 +15,12 @@ public class WiseSaying {
     private String content;
     private String author;
 
+    public WiseSaying(Map<String, Object> map) {
+        this.id = (int) map.get("id");
+        this.content = (String) map.get("content");
+        this.author = (String) map.get("author");
+    }
+
     public boolean isNew() {
         return id == 0;
     }
