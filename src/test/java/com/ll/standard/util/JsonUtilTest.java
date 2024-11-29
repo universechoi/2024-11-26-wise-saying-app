@@ -117,4 +117,23 @@ public class JsonUtilTest {
                 .containsEntry("name", "이름")
                 .containsEntry("gender", "남자");
     }
+
+    @Test
+    @DisplayName("JSON to Map(숫자필드(정수))")
+    public void jsonToMapTest3() {
+        String jsonStr = """
+                {
+                    "id": 1,
+                    "name": "이름",
+                    "gender": "남자"
+                }
+                """.stripIndent().trim();
+
+        Map<String, Object> map = Util.json.toMap(jsonStr);
+
+        assertThat(map)
+                .containsEntry("id", 1)
+                .containsEntry("name", "이름")
+                .containsEntry("gender", "남자");
+    }
 }
