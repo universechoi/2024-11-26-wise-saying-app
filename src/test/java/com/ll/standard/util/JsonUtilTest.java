@@ -86,4 +86,18 @@ public class JsonUtilTest {
                 }
                 """.stripIndent().trim());
     }
+
+    @Test
+    @DisplayName("Json을 Map으로 바꿀 수 있다.")
+    public void jsonToMapTest() {
+        String jsonStr = """
+                    {
+                        "name": "이름"
+                    }
+                    """.stripIndent().trim();
+
+        Map<String, Object> map = Util.json.toMap(jsonStr);
+
+        assertThat(map).containsEntry("name", "이름");
+    }
 }
