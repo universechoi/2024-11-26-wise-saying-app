@@ -100,4 +100,21 @@ public class JsonUtilTest {
 
         assertThat(map).containsEntry("name", "이름");
     }
+
+    @Test
+    @DisplayName("Json을 Map으로 바꿀 수 있다.")
+    public void jsonToMapTest2() {
+        String jsonStr = """
+                {
+                    "name": "이름",
+                    "gender": "남자"
+                }
+                """.stripIndent().trim();
+
+        Map<String, Object> map = Util.json.toMap(jsonStr);
+
+        assertThat(map)
+                .containsEntry("name", "이름")
+                .containsEntry("gender", "남자");
+    }
 }
